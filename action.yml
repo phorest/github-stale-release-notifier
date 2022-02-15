@@ -1,0 +1,16 @@
+name: "Notify Stale Draft/Pre release"
+description: "Sends a slack notification to a channel with hanging relases"
+inputs:
+    github-token:
+        description: "Github Token"
+        required: true
+    stale-days:
+        description: "After how many days from draft creation time release is considered stale"
+        required: true
+        default: 1
+    slack-webhook-url:
+        description: "Slack Webhook Url"
+        required: true
+runs:
+    using: "node16"
+    main: "dist/index.js"

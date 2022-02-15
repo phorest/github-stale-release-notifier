@@ -38,7 +38,7 @@ test("It should process stale release with a notification", async () => {
     await verifyLastRelease();
 
     expect(axios.post).toHaveBeenCalledWith("https://localhost/slack", {
-        text: ":warning: testrepo release: [Latest Release 1.0](http://github/repo/release) is waiting to be published :warning: \n\nrelease body",
+        text: "*testrepo release: <http://github/repo/release|Latest Release 1.0> is waiting to be published*: \n\n>release body",
         type: "mrkdwn",
     });
 });

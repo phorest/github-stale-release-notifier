@@ -18,8 +18,8 @@ test("Gets the latest release of the repository", async () => {
     getOctokit.mockReturnValue({
         rest: {
             repos: {
-                getLatestRelease: async () => ({
-                    data: mockReleaseData,
+                listReleases: async () => ({
+                    data: [mockReleaseData],
                 }),
             },
         },

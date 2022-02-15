@@ -28,8 +28,8 @@ test("It should process stale release with a notification", async () => {
     getOctokit.mockReturnValue({
         rest: {
             repos: {
-                getLatestRelease: async () => ({
-                    data: mockReleaseData,
+                listReleases: async () => ({
+                    data: [mockReleaseData],
                 }),
             },
         },
@@ -58,8 +58,8 @@ test("It should process non stale release without notification", async () => {
     getOctokit.mockReturnValue({
         rest: {
             repos: {
-                getLatestRelease: async () => ({
-                    data: mockReleaseData,
+                listReleases: async () => ({
+                    data: [mockReleaseData],
                 }),
             },
         },
@@ -84,8 +84,8 @@ test("It should process non draft release without notification", async () => {
     getOctokit.mockReturnValue({
         rest: {
             repos: {
-                getLatestRelease: async () => ({
-                    data: mockReleaseData,
+                listReleases: async () => ({
+                    data: [mockReleaseData],
                 }),
             },
         },
@@ -95,7 +95,7 @@ test("It should process non draft release without notification", async () => {
     expect(core.info).toHaveBeenCalledWith("No draft release found");
 });
 
-test("It should process null release", async () => {
+test("It should process empty list of release", async () => {
     core.getInput
         .mockReturnValueOnce("github-token")
         .mockReturnValueOnce("1")
@@ -104,8 +104,8 @@ test("It should process null release", async () => {
     getOctokit.mockReturnValue({
         rest: {
             repos: {
-                getLatestRelease: async () => ({
-                    data: null,
+                listReleases: async () => ({
+                    data: [],
                 }),
             },
         },

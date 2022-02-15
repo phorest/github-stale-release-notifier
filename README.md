@@ -18,7 +18,7 @@ jobs:
         steps:
             - name: Check if there's a stale draft release
               id: notify
-              uses: phorest/github-stale-release-notifier@v1.0.2
+              uses: phorest/github-stale-release-notifier@v1.0.3
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   stale-days: 1

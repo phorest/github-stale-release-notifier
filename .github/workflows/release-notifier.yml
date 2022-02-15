@@ -14,5 +14,5 @@ jobs:
               uses: phorest/github-stale-release-notifier@v1.0.2
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
-                  stale-days: 1
+                  stale-days: 0
                   slack-webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}

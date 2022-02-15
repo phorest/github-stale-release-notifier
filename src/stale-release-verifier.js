@@ -39,7 +39,7 @@ const sendSlackNotification = async (slackWebhookUrl, lastRelease) => {
 const prepareSlackPayload = (repo, releaseData) => {
     return {
         type: "mrkdwn",
-        text: `*${repo} release: <${releaseData.html_url}|${releaseData.name}> is waiting to be published*: \n\n>${releaseData.body}`,
+        text: `*${repo} release <${releaseData.html_url}|${releaseData.name}> is waiting to be published*: \n\n>>>${releaseData.body}`,
     };
 };
 

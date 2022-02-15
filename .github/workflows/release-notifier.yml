@@ -1,4 +1,4 @@
-name: notify-release
+name: notify-stale-release
 on:
     workflow_dispatch:
         branches:

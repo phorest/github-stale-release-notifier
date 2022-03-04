@@ -29,17 +29,17 @@ async function verifyLastRelease() {
 }
 
 const sendSlackNotification = async (slackWebhookUrl, lastRelease) => {
-    const { repo } = github.context.repo;
-    const payload = prepareSlackPayload(repo, lastRelease);
+    const { owner, repo } = github.context.repo;
+    const payload = prepareSlackPayload(owner, repo, lastRelease);
 
     core.info(`Sending slack notification for release: ${lastRelease.name}`);
     await sendToSlack(slackWebhookUrl, payload);
 };
 
-const prepareSlackPayload = (repo, releaseData) => {
+const prepareSlackPayload = (owner, repo, releaseData) => {
     return {
         type: "mrkdwn",
-        text: `*${repo} release <${releaseData.html_url}|${releaseData.name}> is waiting to be published*: \n\n>>>${releaseData.body}`,
+        text: `*${repo} release <https://github.com/${owner}/${repo}/releases|${releaseData.name}> is waiting to be published*: \n\n>>>${releaseData.body}`,
     };
 };
 
